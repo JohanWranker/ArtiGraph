@@ -1,6 +1,6 @@
 <script>
   let init = false;
-  import svelteLogo from "./assets/svelte.svg";
+  import svelteLogo from "./assets/yarn.png";
   import { createGitgraph } from "@gitgraph/js";
   import { onMount } from "svelte";
 
