@@ -55,7 +55,7 @@
     </a>
   </div>
 
-  <button on:click={initGraph}> The mouse position is </button>
+  <button on:click={initGraph}> ggg </button>
 
   <div id="graph-container" />
   <h1>Vite + Svelte</h1>
