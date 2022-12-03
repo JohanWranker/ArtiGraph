@@ -1,6 +1,7 @@
 <script>
   let init = false;
-  import svelteLogo from "./assets/yarn.png";
+  import yarnLogo from "./assets/yarn.png";
+  import menu from "./assets/menu.png";
   import { createGitgraph } from "@gitgraph/js";
   import { onMount } from "svelte";
 
@@ -46,13 +47,13 @@
 </script>
 
 <main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src="/vite.svg" class="logo" alt="Vite Logo" />
-    </a>
+  <div >
     <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
+      <img src={yarnLogo} class="logo" alt="Logo" />
     </a>
+    <a href="https://github.com/JohanWranker/ArtiGraph" class="read-the-docs">README</a>
+    <img src={menu} class="logo" alt="Menu"/>
+
   </div>
 
   <button on:click={initGraph}> ggg </button>
@@ -63,12 +64,13 @@
   <p>
     Check out <a
       href="https://github.com/sveltejs/kit#readme"
+
       target="_blank"
       rel="noreferrer">SvelteKit</a
     >, the official Svelte app framework powered by Vite!
   </p>
 
-  <p class="read-the-docs">Click on the Vite and Svelte logos to learn more</p>
+  <a href="https://github.com/JohanWranker/ArtiGraph" class="read-the-docs">README</a>
 </main>
 
 <style>
@@ -80,7 +82,7 @@
   .logo:hover {
     filter: drop-shadow(0 0 2em #646cffaa);
   }
-  .logo.svelte:hover {
+  .logo:hover {
     filter: drop-shadow(0 0 2em #ff3e00aa);
   }
   .read-the-docs {
