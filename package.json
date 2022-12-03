@@ -14,6 +14,7 @@
     "vite": "^3.2.3"
   },
   "dependencies": {
-    "@gitgraph/js": "^1.4.0"
+    "@gitgraph/js": "^1.4.0",
+    "time-delta": "^1.0.0"
   }
 }

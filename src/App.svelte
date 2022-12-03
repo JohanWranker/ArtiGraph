@@ -4,19 +4,34 @@
   import menu from "./assets/menu.png";
   import { createGitgraph } from "@gitgraph/js";
   import { onMount } from "svelte";
+  import { Tree } from "./demodata";
 
-  const REPO_PATH = "https://github.com/JohanWranker/ArtiGraph";
+  let REPO_PATH = "https://github.com/JohanWranker/ArtiGraph";
 
   function initGraph() {
     // Get the graph container HTML element.
     const graphContainer = document.getElementById("graph-container");
 
     // Instantiate the graph.
-    const gitgraph = createGitgraph(graphContainer);
+    const gitgraph = createGitgraph(graphContainer, {
+      author: { name: "d" },
+      mode: null /*"compact"*/,
+    });
 
     // Simulate git commands with Gitgraph API.
-    const master = gitgraph.branch("master");
-    master.commit("Initial commit");
+    var t = new Tree();
+    var branch = t.GetRoot();
+    const master = gitgraph.branch(branch);
+    var data = null;
+
+    while (true) {
+      data = t.GetNext(branch);
+      if (data == null) {
+        break;
+      }
+      master.commit(data);
+    }
+
     master.commit({
       subject: "Add feature",
       body: "More details about the feature…",
