@@ -1,6 +1,38 @@
 <script>
+  let timer;
   import svelteLogo from "./assets/svelte.svg";
   import Counter from "./lib/Counter.svelte";
+  import { createGitgraph } from "@gitgraph/js";
+  //import { onMount } from "svelte/types/runtime/internal/lifecycle";
+  //import { init } from "svelte/internal";
+
+  function gogogo() {
+    // Get the graph container HTML element.
+    const graphContainer = document.getElementById("graph-container");
+
+    // Instantiate the graph.
+    const gitgraph = createGitgraph(graphContainer);
+
+    // Simulate git commands with Gitgraph API.
+    const master = gitgraph.branch("master");
+    master.commit("Initial commit");
+
+    const develop = gitgraph.branch("develop");
+    develop.commit("Add TypeScript");
+
+    const aFeature = gitgraph.branch("a-feature");
+    aFeature
+      .commit("Make it work")
+      .commit("Make it right")
+      .commit("Make it fast");
+
+    develop.merge(aFeature);
+    develop.commit("Prepare v1");
+
+    master.merge(develop).tag("v1.0.0");
+  }
+
+  //onMount(gogogo);
 </script>
 
 <main>
@@ -12,6 +44,9 @@
       <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
     </a>
   </div>
+  <button on:click={gogogo}> The mouse position is </button>
+
+  <div id="graph-container" />
   <h1>Vite + Svelte</h1>
 
   <div class="card">
