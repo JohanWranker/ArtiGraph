@@ -1,9 +1,11 @@
 <script>
   let init = false;
-  import yarnLogo from "./assets/yarn.png";
+  import yarnLogo from "/yarn.png";
   import menu from "./assets/menu.png";
   import { createGitgraph } from "@gitgraph/js";
   import { onMount } from "svelte";
+
+  const REPO_PATH = "https://github.com/JohanWranker/ArtiGraph";
 
   function initGraph() {
     // Get the graph container HTML element.
@@ -47,30 +49,13 @@
 </script>
 
 <main>
-  <div >
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={yarnLogo} class="logo" alt="Logo" />
-    </a>
-    <a href="https://github.com/JohanWranker/ArtiGraph" class="read-the-docs">README</a>
-    <img src={menu} class="logo" alt="Menu"/>
-
+  <div style="align-items: left;">
+    <img src={menu} class="logo" alt="Menu" />
+    <img href={REPO_PATH} src={yarnLogo} class="logo" alt="Logo" />
+    <a class="logo" href={REPO_PATH}>README</a>
+    <button>Fetch</button>
   </div>
-
-  <button on:click={initGraph}> ggg </button>
-
   <div id="graph-container" />
-  <h1>Vite + Svelte</h1>
-
-  <p>
-    Check out <a
-      href="https://github.com/sveltejs/kit#readme"
-
-      target="_blank"
-      rel="noreferrer">SvelteKit</a
-    >, the official Svelte app framework powered by Vite!
-  </p>
-
-  <a href="https://github.com/JohanWranker/ArtiGraph" class="read-the-docs">README</a>
 </main>
 
 <style>
@@ -84,8 +69,5 @@
   }
   .logo:hover {
     filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
   }
 </style>
