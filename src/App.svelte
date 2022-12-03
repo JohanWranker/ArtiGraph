@@ -1,12 +1,10 @@
 <script>
-  let timer;
+  let init = false;
   import svelteLogo from "./assets/svelte.svg";
-  import Counter from "./lib/Counter.svelte";
   import { createGitgraph } from "@gitgraph/js";
-  //import { onMount } from "svelte/types/runtime/internal/lifecycle";
-  //import { init } from "svelte/internal";
+  import { onMount } from "svelte";
 
-  function gogogo() {
+  function initGraph() {
     // Get the graph container HTML element.
     const graphContainer = document.getElementById("graph-container");
 
@@ -16,6 +14,16 @@
     // Simulate git commands with Gitgraph API.
     const master = gitgraph.branch("master");
     master.commit("Initial commit");
+    master.commit({
+      subject: "Add feature",
+      body: "More details about the feature…",
+      dotText: "❤️",
+      tag: "v1.2",
+      style: {
+        // Specific style for this commit
+      },
+      hash: "Build22",
+    });
 
     const develop = gitgraph.branch("develop");
     develop.commit("Add TypeScript");
@@ -32,7 +40,9 @@
     master.merge(develop).tag("v1.0.0");
   }
 
-  //onMount(gogogo);
+  onMount(async () => {
+    initGraph();
+  });
 </script>
 
 <main>
@@ -44,14 +54,11 @@
       <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
     </a>
   </div>
-  <button on:click={gogogo}> The mouse position is </button>
+
+  <button on:click={initGraph}> The mouse position is </button>
 
   <div id="graph-container" />
   <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
-  </div>
 
   <p>
     Check out <a
