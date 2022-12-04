@@ -52,13 +52,17 @@
 </script>
 
 <main>
-  <div style="align-items: left;">
-    <img src={menu} class="logo" alt="Menu" />
-    <img href={REPO_PATH} src={yarnLogo} class="logo" alt="Logo" />
-    <a class="logo" href={REPO_PATH}>README</a>
-    <button>Fetch</button>
+  <div style="display: flex">
+    <img
+      style="object-fit: scale-down; width: 40px;"
+      src={menu}
+      class="logo"
+      alt="Menu"
+    />
+    <h1 style="align: center">ArtiGraph</h1>
   </div>
-  <div id="graph-container" />
+  <div style="overflow-y: scroll;" id="graph-container" />
+  <div style="height: 150px;">sfdfs</div>
 </main>
 
 <style>
