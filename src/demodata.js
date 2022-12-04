@@ -93,7 +93,7 @@ export class Tree {
         }
         var item = deliveries[branch][this.index]
         var id = item["reference"]
-        var onClick = () => { alert(`Commit ${id} selected`) };
+        var onClick = () => { alert(`Commit ${item["guid"]} selected`) };
 
         var subject = item["reference"] ? item["reference"] : item["id"]
 
@@ -125,7 +125,7 @@ export class Tree {
             onMouseOut?: (commit: Commit<TNode>) => void;
             */
 
-           //"hash": item["guid"],
+            //"hash": item["guid"],
             "style": style,
             "dotText": item["is_geatest"] ? "❤️" : item["scrapped"] ? "💣" : "",
             "subject": subject,

@@ -14,7 +14,6 @@
 
     // Instantiate the graph.
     const gitgraph = createGitgraph(graphContainer, {
-      author: { name: "d" },
       mode: null /*"compact"*/,
     });
 
