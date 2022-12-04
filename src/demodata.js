@@ -15,7 +15,7 @@ let deliveries = {
             "is_geatest": false,
             "scrapped": false,
             "fork": "",
-            "guid": "3456789-3456789-66"
+            "guid": "3456789-345678"
         },
         {
             "id": 4476,
@@ -24,7 +24,7 @@ let deliveries = {
             "is_geatest": false,
             "scrapped": false,
             "fork": "",
-            "guid": "3456789-3456789-66"
+            "guid": "3456789-3456789-6226"
         },
         {
             "id": 4480,
@@ -33,7 +33,7 @@ let deliveries = {
             "is_geatest": true,
             "scrapped": false,
             "fork": "",
-            "guid": "3456789-3456789-66"
+            "guid": "3456789-3456789-66444"
         },
         {
             "id": 4481,
@@ -42,7 +42,7 @@ let deliveries = {
             "is_geatest": false,
             "scrapped": true,
             "fork": "",
-            "guid": "3456789-3456789-66"
+            "guid": "3456789-3456789-266"
         },
         {
             "id": 4482,
@@ -51,7 +51,7 @@ let deliveries = {
             "is_geatest": false,
             "scrapped": false,
             "fork": "",
-            "guid": "3456789-3456789-66"
+            "guid": "3456789-3456789-626"
         },
         {
             "id": 4483,
@@ -60,7 +60,7 @@ let deliveries = {
             "is_geatest": false,
             "scrapped": false,
             "fork": "",
-            "guid": "3456789-3456789-66"
+            "guid": "3456789-3456789-663"
         }
     ]
 }
@@ -72,13 +72,7 @@ export class Tree {
         this.lastBranch = []
         this.index = 0
 
-        this.style = {
-            "message": {
-                "displayAuthor": false,
-                "displayHash": false,
 
-            }
-        }
     }
 
     GetRoot() {
@@ -106,7 +100,16 @@ export class Tree {
         subject += "     Delivered: " + item["date"]
         var dotText = item["is_geatest"] ? "❤️" : item["scrapped"] ? "💣" : ""
 
+        var style = {
+            "message": {
+                "displayAuthor": false,
+                "displayHash": false,
 
+            }
+        }
+        if (item["scrapped"]) {
+            style["message"]["color"] = "red"
+        }
         var commit = {
             /*
             author?: string;
@@ -122,8 +125,8 @@ export class Tree {
             onMouseOut?: (commit: Commit<TNode>) => void;
             */
 
-            "hash": this.guid,
-            "style": this.style,
+           //"hash": item["guid"],
+            "style": style,
             "dotText": item["is_geatest"] ? "❤️" : item["scrapped"] ? "💣" : "",
             "subject": subject,
             "onMessageClick": onClick,

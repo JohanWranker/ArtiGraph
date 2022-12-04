@@ -32,17 +32,6 @@
       master.commit(data);
     }
 
-    master.commit({
-      subject: "Add feature",
-      body: "More details about the feature…",
-      dotText: "❤️",
-      tag: "v1.2",
-      style: {
-        // Specific style for this commit
-      },
-      hash: "Build22",
-    });
-
     const develop = gitgraph.branch("develop");
     develop.commit("Add TypeScript");
 
